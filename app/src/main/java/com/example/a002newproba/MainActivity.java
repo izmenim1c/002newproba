@@ -2,6 +2,7 @@ package com.example.a002newproba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,5 +15,12 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container,ListMessegesFragment.newInstance())
                 .commit();
-    }
+
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container_right,ReadMessegeFragment.newInstance())
+                    .commit();
+        }
+        }
 }
