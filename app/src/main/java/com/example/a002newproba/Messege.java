@@ -3,16 +3,16 @@ package com.example.a002newproba;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Message implements Parcelable {
+public class Messege implements Parcelable {
     private int id;
     private String text;
 
-    public Message(int id, String text) {
+    public Messege(int id, String text) {
         this.id = id;
         this.text = text;
     }
 
-    protected Message(Parcel in) {
+    protected Messege(Parcel in) {
         id = in.readInt();
         text = in.readString();
     }
@@ -28,15 +28,15 @@ public class Message implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Message> CREATOR = new Creator<Message>() {
+    public static final Creator<Messege> CREATOR = new Creator<Messege>() {
         @Override
-        public Message createFromParcel(Parcel in) {
-            return new Message(in);
+        public Messege createFromParcel(Parcel in) {
+            return new Messege(in);
         }
 
         @Override
-        public Message[] newArray(int size) {
-            return new Message[size];
+        public Messege[] newArray(int size) {
+            return new Messege[size];
         }
     };
 
