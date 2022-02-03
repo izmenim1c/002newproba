@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.TextView;
  */
 public class ListMessegesFragment extends Fragment {
     Messege currentmassege;
+    public static String KEY_Msg = "city";
     boolean isLandScape;
 
     public static ListMessegesFragment newInstance() {
@@ -46,6 +48,23 @@ public class ListMessegesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initList(view);
+        if(savedInstanceState!=null){
+            currentmassege = savedInstanceState.getParcelable(KEY_Msg);
+        }
+
+        if(isLandScape)
+            if(currentmassege!=null){
+                showReadMessegeLand();
+            }else{
+                //showReadMessegeLand();
+            }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(KEY_Msg,currentmassege);
+        super.onSaveInstanceState(outState);
     }
 
     private void initList(View view) {
